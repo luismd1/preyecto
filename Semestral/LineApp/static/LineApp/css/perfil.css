@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'valorant font';
-    src: url('/web/font/Valorant\ Font.ttf');
+    src: url('../font/ValorantFont.ttf');
 }
 @font-face{
     font-family: 'ff mark';
-    src: url('/web/font/fontFont_FF.Mark.Pro.otf');
+    src: url('../font/FontFont_FF.Mark.Pro.otf');
 }
 body{
     background-color: black;
-    background-image: url(/web/img/fondosinnada.png);
+    background-image: url("../img/fondosinnada.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center start;
@@ -17,25 +17,9 @@ body{
 #titulo{
     font-family: "valorant font";
 }
-a{
+a,h5,h6,h3,label,button,p{
     font-family: "ff mark";
 }
-h5{
-    font-family: "ff mark";
-}
-h3{
-    font-family: "ff mark";
-}
-label{
-    font-family: "ff mark";
-};
-button{
-    font-family: "ff mark";
-};
-p{
-    font-family: "ff mark";
-}
-
 * {
     margin: 0;
     padding: 0;

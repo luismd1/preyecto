@@ -33,15 +33,8 @@ $(document).ready(function(e){
             break;
         }
     }
-    const size = (campo) => {
-        if(){
-
-        }else{
-            
-        }
-    }
     const validarCampo = (expre, input, campo) => {
-        if(expre.test(input.value)){
+        if(expre.test(input.value) && input.value.length > 5 && input.value.length < 21){
             $("#reg-"+campo).removeClass("is-invalid");
             $("#reg-"+campo).addClass("is-valid");
             $("#msj-"+campo).removeClass("d-block");

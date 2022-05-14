@@ -1,22 +1,19 @@
 @font-face {
     font-family: 'valorant font';
-    src: url('/web/font/ValorantFont.ttf');
+    src: url('../font/ValorantFont.ttf');
 }
 @font-face{
     font-family: 'ff mark';
-    src: url('/web/font/FontFont_FF.Mark.Pro.otf');
+    src: url('../font/FontFont_FF.Mark.Pro.otf');
 }
 body, html {
     height: 100%;
 }
-  
 .bg{
     /* The image used */
-    background-image: url("/web/img/FondoChambel.png");
-  
+    background-image: url("../img/FondoChambel.png");
     /* Full height */
     height: 100%;
-  
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -25,11 +22,9 @@ body, html {
 }
 .bg2{
     /* The image used */
-    background-image: url("/web/img/ValoFondo.jpg");
-  
+    background-image: url("../img/ValoFondo.jpg");
     /* Full height */
     height: 100%;
-  
     /* Center and scale the image nicely */
     background-position: start center;
     background-repeat: no-repeat;
@@ -38,11 +33,9 @@ body, html {
 }
 .bg3{
     /* The image used */
-    background-image: url("/web//img/fondosinnada.png");
-  
+    background-image: url("../img/fondosinnada.png");
     /* Full height */
     height: 100%;
-  
     /* Center and scale the image nicely */
     background-position: start center;
     background-repeat: no-repeat;
@@ -51,11 +44,9 @@ body, html {
 }
 .bg4{
     /* The image used */
-    background-image: url("/web/img/fondosinnada2.png");
-  
+    background-image: url("../img/fondosinnada2.png");
     /* Full height */
     height: 100%;
-  
     /* Center and scale the image nicely */
     background-position:  center;
     background-repeat: no-repeat;
@@ -81,36 +72,12 @@ body, html {
     text-decoration: none;
     transition: 0.3s;
 }
-p{
-    font-family: "ff mark";
-}
 #titulo{
     font-family: "valorant font";
 }
-a{
+a,h6,h5,h3,h1,h2,label,button,p{
     font-family: "ff mark";
 }
-h6{
-    font-family: "ff mark";
-}
-h5{
-    font-family: "ff mark";
-}
-h3{
-    font-family: "ff mark";
-}
-h1{
-    font-family: "ff mark";
-}
-h2{
-    font-family: "ff mark";
-}
-label{
-    font-family: "ff mark";
-};
-button{
-    font-family: "ff mark";
-};
 div.sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -144,37 +111,37 @@ iframe{
     height: auto;
 }
 .ascent{
-    background-image: url(/web/img/Mapas/ascent.jpeg);
+    background-image: url(../img/Mapas/ascent.jpeg);
     background-size: cover;
     background-position: center center;
 }
 .bind{
-    background-image: url(/web/img/Mapas/bind.jpeg);
+    background-image: url(../img/Mapas/bind.jpeg);
     background-size: cover;
     background-position: center center;
 }
 .breeze{
-    background-image: url(/web/img/Mapas/breeze.jpeg);
+    background-image: url(../img/Mapas/breeze.jpeg);
     background-size: cover;
     background-position: center center;
 }
 .haven{
-    background-image: url(/web/img/Mapas/haven.jpeg);
+    background-image: url(../img/Mapas/haven.jpeg);
     background-size: cover;
     background-position: center center;
 }
 .icebox{
-    background-image: url(/web/img/Mapas/icebox.jpeg);
+    background-image: url(../img/Mapas/icebox.jpeg);
     background-size: cover;
     background-position: center center;
 }
 .split{
-    background-image: url(/web/img/Mapas/split.jpeg);
+    background-image: url(../img/Mapas/split.jpeg);
     background-size: cover;
     background-position: center center;
 }
 .fracture{
-    background-image: url(/web/img/Mapas/fracture.jpeg);
+    background-image: url(../img/Mapas/fracture.jpeg);
     background-size: cover;
     background-position: center center;
 }
