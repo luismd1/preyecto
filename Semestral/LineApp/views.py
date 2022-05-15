@@ -33,10 +33,12 @@ def editarperfil(request):
 # HTML inicio
 
 def inicio(request):
-    contexto = {"titLineApp":"Nano para verdes de C", 
+    contexto = {
+    "titLineApp":"Nano para verdes de C", 
     "descLineApp":"Nanoenjambre lanzado desde Lobby de Larga para limpiar tras las cajas Verdes de la derecha y frenar el apoyo de garaje",
     "habilidad":"Nanoenjambre",
     "areaLimpieza":"C",
+    "videoLineApp":"https://www.youtube.com/embed/d9xGs0jOz1w",
     "imagenAgent":"/static/LineApp/img/Avatar/killjoy.png",
     "fechaVideo":"10/10/2020"}
     return render(request,'LineApp/inicio.html',contexto) 
