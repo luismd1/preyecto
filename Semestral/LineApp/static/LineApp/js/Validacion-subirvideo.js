@@ -10,38 +10,38 @@ $(document).ready(function () {
     }
 
     const campos = {
-        tit: false,
-        agen: false,
+        titul: false,
+        agente: false,
         mapa: false,
-        band: false,
-        desc: false,
-        incor: false
+        bando: false,
+        descripcion: false,
+        incorporacion: false
     }
 
     const validacion = (e) => {
         switch (e.target.name) {
-            case "titulo":
-                validarCampo(expresiones.titulo, e.target, "tit");
+            case "titul":
+                validarCampo(expresiones.titulo, e.target, "titul");
                 break;
             case "descripcion":
-                validarCampo(expresiones.descripcion, e.target, "desc");
+                validarCampo(expresiones.descripcion, e.target, "descripcion");
                 break;
             case "incorporacion":
-                validarCampo(expresiones.incorporacion, e.target, "incor");
+                validarCampo(expresiones.incorporacion, e.target, "incorporacion");
                 break;
         }
     }
 
     const validarCampo = (expre, input, campo) => {
         if (expre.test(input.value)) {
-            $("#sv-" + campo).removeClass("is-invalid");
-            $("#sv-" + campo).addClass("is-valid");
+            $("#" + campo).removeClass("is-invalid");
+            $("#" + campo).addClass("is-valid");
             $("#msj-" + campo).removeClass("d-block");
             $("#msj-" + campo).addClass("d-none");
             campos[campo] = true;
         } else {
-            $("#sv-" + campo).removeClass("is-valid");
-            $("#sv-" + campo).addClass("is-invalid");
+            $("#" + campo).removeClass("is-valid");
+            $("#" + campo).addClass("is-invalid");
             $("#msj-" + campo).removeClass("d-none");
             $("#msj-" + campo).addClass("d-block");
             campos[campo] = false;
@@ -52,13 +52,13 @@ $(document).ready(function () {
     const vselect = (e) => {
         switch (e.target.name) {
             case "agente":
-                validarSelect("agen");
+                validarSelect("agente");
                 break;
             case "mapa":
                 validarSelect("mapa");
                 break;
             case "bando":
-                validarSelect("band");
+                validarSelect("bando");
                 break;
         }
     }
@@ -87,7 +87,7 @@ $(document).ready(function () {
     });
     $("#formsubirvideo").submit(function () {
         event.preventDefault();
-        if(campos.tit && campos.agen && campos.mapa && campos.band && campos.desc && campos.incor){
+        if(campos.titul && campos.agente && campos.mapa && campos.bando && campos.descripcion && campos.incorporacion){
             $("#mensaj-envio").removeClass("d-none");
             $("#mensaj-envio").addClass("d-block");
             $("#mensaj-error").addClass("d-none");
