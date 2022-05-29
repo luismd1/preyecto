@@ -4,9 +4,9 @@ $(document).ready(function () {
     const seles = document.querySelectorAll('#formsubirvideo select');
 
     const expresiones = {
-        titulo: /^[a-zA-Z0-9^\s]{3,30}$/,
+        titulo: /^[a-zA-Z0-9^\s\_\-]{3,30}$/,
         descripcion: /^[a-zA-Z0-9^\s]{1,200}$/,
-        incorporacion: /^https:\/\/www.youtube.com\/embed\/[a-zA-Z0-9]+$/ //  tiene que empezar con la direccion https://www.youtube.com/embed/....................... del video
+        incorporacion: /^https:\/\/www.youtube.com\/embed\/[a-zA-Z0-9\_\-]+$/ //  tiene que empezar con la direccion https://www.youtube.com/embed/....................... del video
     }
 
     const campos = {
