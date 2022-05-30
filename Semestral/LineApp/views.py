@@ -30,7 +30,7 @@ def f_registro(request):
 
     # HTML INICIO
 def inicio(request):
-    data1 = {"lista":Lineup.objects.all().order_by('idline')[0:12],"lista2":Lineup.objects.all().order_by('idline')[13:24],"lista3":Lineup.objects.all().order_by('idline')[25:36]}
+    data1 = {"lista":Lineup.objects.all().order_by('idLine')[0:12],"lista2":Lineup.objects.all().order_by('idLine')[13:24],"lista3":Lineup.objects.all().order_by('idLine')[25:36]}
     return render(request,'LineApp/inicio.html',data1)
 
 def subirvideo(request):

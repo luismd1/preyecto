@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'valorant font';
-    src: url('/web/font/Valorant\ Font.ttf');
+    src: url('../font/ValorantFont.ttf');
 }
 @font-face{
     font-family: 'ff mark';
-    src: url('/web/font/fontFont_FF.Mark.Pro.otf');
+    src: url('../font/FontFont_FF.Mark.Pro.otf');
 }
 body{
-    background-color: black;
-    background-image: url(/web/img/fondosinnada.png);
+    
+    background-image: url("../img/fondosinnada.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: start;
