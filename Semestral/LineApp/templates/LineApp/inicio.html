@@ -141,10 +141,10 @@
     </div>
 
     <!-- Los videos -->
-    {% for tip in lista %}
     <div class="container">
-      <div class="row" style="margin-top: 10px;">
-        <div class="col-3">
+      <div class="row carta">
+        {% for Lineup in lista %}
+        <div class="col-sm-3 col-12">
           <div class="card border-danger bg-dark text-white">
             <div class="card-header haven"><img src="{{ Lineup.agente }}" alt="avatar" class="avatar">
             </div>
@@ -157,20 +157,20 @@
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal1">Ver
                 descripcion</button>
 
-    <!-- MODAL / VER DESCRIPCION-->
+              <!-- MODAL / VER DESCRIPCION-->
               <div class="modal" id="Modal1">
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content bg-dark">
 
-    <!-- CABEZA DEL MODAL -->
+                    <!-- CABEZA DEL MODAL -->
                     <div class="modal-header haven">
                       <div class="col-sm-3">
-                        <img src="{{ imagenAgent }}" alt="avatar" class="avatar">
+                        <img src="{{ Lineup.agente }}" alt="avatar" class="avatar">
                       </div>
                       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
-    <!-- CUERPO DEL MODAL -->
+                    <!-- CUERPO DEL MODAL -->
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-sm-12">
@@ -195,14 +195,6 @@
                               <p class="card-text">{{ Lineup.descripcion }}</p>
                             </div>
                           </div>
-                          <div class="row" style="margin-top: 25px;">
-                            <div class="col-sm-6">
-                              <p class="card-text">Habilidades: {{ Lineup.habilidad }}</p>
-                            </div>
-                            <div class="col-sm-6">
-                              <p class="card-text">Area Limpiada:{{ Lineup.area_limpieza }}</p>
-                            </div>
-                          </div>
                         </div>
                       </div>
                       <div class="row">
@@ -218,14 +210,8 @@
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <button class="btn btn-danger" data-bs-target="#mapa1" data-bs-toggle="modal"
-                            data-bs-dismiss="modal">Ver Mapa</button>
-                        </div>
-                      </div>
                     </div>
-    <!-- PIE DE MODAL -->
+                    <!-- PIE DE MODAL -->
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -233,16 +219,17 @@
                   </div>
                 </div>
               </div>
-    <!--ACA VA EL MODAL DEL MAPA-->
+              <!--ACA VA EL MODAL DEL MAPA-->
 
             </div>
           </div>
-    <!-- fin card -->
-    
+          <!-- fin card -->
+
         </div>
+
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
     <!-- Fin Videos -->
 
     <!--PAGINACION-->
