@@ -1,5 +1,9 @@
+from email import message
 from django.shortcuts import render, redirect
-from LineApp.models import Usuario, Lineup
+from LineApp.models import Lineup
+from django.contrib import messages
+from .forms import UserForm, VideoForm
+from django.contrib.auth.models import User
 
 def inicio(request):
     return render(request,'LineApp/inicio.html')
@@ -16,37 +20,41 @@ def perfil(request):
 def ranking(request):
     return render(request,'LineApp/ranking.html')
 
+
 def registro(request):
-    return render(request,'LineApp/registro.html')
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if request.user.is_authenticated:
+            form.save()
+            nick1 = form.cleaned_data['username']
+            messages.success(request, f'Usuario {nick1} creado con exito')
+            return redirect('inicio')
+    else:
+        form = UserForm()
 
-def f_registro(request):
-    nick1 = request.POST['reg-usu']
-    correo1 = request.POST['reg-email']
-    pass1 = request.POST['reg-pass']
+    contexto = { 'form' : form }
 
-    Usuario.objects.create(nick = nick1, correo = correo1, contra = pass1)
-
-    return redirect('registro')
+    return render(request,'LineApp/registro.html', contexto)
 
     # HTML INICIO
 def inicio(request):
-    data1 = {"lista":Lineup.objects.all().order_by('idLine')[0:12],"lista2":Lineup.objects.all().order_by('idLine')[13:24],"lista3":Lineup.objects.all().order_by('idLine')[25:36]}
-    return render(request,'LineApp/inicio.html',data1)
+    data = {"lista":Lineup.objects.all().order_by('idLine')[0:12],"lista2":Lineup.objects.all().order_by('idLine')[13:24],"lista3":Lineup.objects.all().order_by('idLine')[25:36]}
+    return render(request,'LineApp/inicio.html',data)
+
 
 def subirvideo(request):
-    return render(request,'LineApp/subirvideo.html')
-
-def f_subirvideo(request):
-    titulo1 = request.POST['titul']
-    agente1 = request.POST['agente']
-    mapa1 = request.POST['mapa']
-    bando1 = request.POST['bando']
-    descripcion1 = request.POST['descripcion']
-    incorporacion1 = request.POST['incorporacion']
-
-    Lineup.objects.create(titulo = titulo1, agente = agente1, mapa = mapa1, bando = bando1, descripcion = descripcion1, incorporacion = incorporacion1)
-
-    return redirect('subirvideo')
+    if request.method == 'POST':
+        form = VideoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            titulo = form.cleaned_data['titulo']
+            messages.success(request, f'Video {titulo} creado con exito')
+            return redirect('inicio')
+    else:
+        form = VideoForm()
+    
+    contexto = { 'form' : form }
+    return render(request,'LineApp/subirvideo.html', contexto)
 
 def InicioSesion(request):
     return render(request,'LineApp/InicioSesion.html')

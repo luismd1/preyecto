@@ -1,185 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Subir video</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'LineApp/css/General.css' %}">
-    <link rel="icon" href="{% static 'LineApp/img/AppIcono.png' %}">
-</head>
-<body class="bg3">
-      <div class="container bg-dark border border-danger">
-        <div class="row">
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-              <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'inicio' %}">
-                <img src="{% static 'LineApp/img/AppIcono.png' %}" class="icono" alt="">
-              </a>
-              <a class="navbar-brand" href="{% url 'inicio' %}" id="titulo">Line App</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                  <li class="nav-item">
-                      <a class="nav-link " aria-current="page" href="#">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'ranking' %}">Clasificación</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'AcercaDe' %}">Acerca de</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link bi bi-upload text-danger active" href="{% url 'subirvideo' %}"> Subir video</a>
-                </li>
-                  </ul>
-              </div>
-              </div>
-              <div class="dropdown bg-dark float-end">
-                  <button class="btn btn-secondary dropdown-toggle bg-dark border border-danger" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="bi bi-person-circle"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-dark" style="z-index: 9999;" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="{% url 'InicioSesion' %}">Iniciar sesion</a>
-                  <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
-                  <a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a>
-                  <a class="dropdown-item" href="{% url 'config' %}">Configuración</a>
-                  <a class="dropdown-item" href="#">Salir</a>
-                  </div>
-              </div>
-          </nav>
-          
-        </div>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-8">
-                <h1 class="text-white d-flex justify-content-start" style="text-align: center;">Subir video</h1>
-            </div>
-            <div class="col-3"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-            </div>
-            <div class="col-md-10 margin-top:10px;">
-                <!--------------------FORMULARIO DE SUBIR VIDEO----------------------->
-                <form method="POST" action="{% url 'f_subirvideo' %}" enctype="text/plain" name="formulario" id="formsubirvideo">
-                    <br>
-                    <!-- Titulo -->
-                    <div class="form-group ">
-                        <label class="text-white">Titulo del video: </label>
-                        <input type="text" name="titul" id="titul" class="form-control">
-                        <p class="d-none text-white" id="msj-titul"> La descripcion tiene que tener entre 3 a 30 caracteres </p>
-                    </div>
-                    <br>
-                    <!-- Agente -->
-                    <div class="form-group">
-                      <label class="text-white"> Agente: </label>
-                      <select class="form-select " name="agente" id="agente" aria-label="Default select example">
-                        <option selected value="nada">Selecionar</option>
-                      </select>
-                      <p class="d-none text-white" id="msj-agente"> Seleccione un agente </p>
-                    </div>
-                    <br>
-                    <!-- Mapa -->
-                    <div class="form-group">
-                      <label class="text-white"> Mapa: </label>
-                      <select class="form-select " name="mapa" id="mapa" aria-label="Default select example">
-                        <option selected value="nada">Selecionar </option>
-                      </select>
-                      <p class="d-none text-white" id="msj-mapa"> Seleccione un mapa </p>
-                    </div>
-                    <br>
-                    <!-- Bando -->
-                    <div class="form-group">
-                      <label class="text-white"> Bando: </label>
-                      <select class="form-select " name="bando" id="bando" aria-label="Default select example">
-                        <option selected value="nada"> Selecionar </option>
-                        <option value="1">Atacante</option>
-                        <option value="2">Defensa</option>
-                      </select>
-                      <p class="d-none text-white" id="msj-bando"> Seleccione un bando </p>
-                    </div>
-                    <br>
-                    <!-- Descripción -->
-                    <div class="form-group ">
-                        <label class="text-white">Descripción del video: </label>
-                        <input type="text" name="descripcion" id="descripcion" class="form-control">
-                        <p class="d-none text-white" id="msj-descripcion"> La descripción tiene que tener entre 3 a 200 caracteres </p>
-                    </div>
-                    <br>
-                    <!-- Incorporación -->
-                    <div class="form-group">
-                        <button type="button" class="btn btn-dark bi bi-info-circle "  data-bs-toggle="modal" data-bs-target="#Modal10000"></button>               
-                        <label class="text-white">Incorporación: </label>
-                        <input type="text" name="incorporacion" id="incorporacion" class="form-control">
-                        <p class="d-none text-white" id="msj-incorporacion"> Tu incorporación es incorrecto </p>
-                    </div>
-                    <br>
-                    <input type="submit" class="btn btn-danger mb-3">
-                    <p id="mensaj-envio" class="d-none text-white mt-3 mb-3">Video enviado correctamente</p>
-                    <p id="mensaj-error" class="d-none text-white mt-3 mb-3">ERROR: Porfavor complete los campos</p>
-                </form>
-            </div>
-            <div class="col-md-1">
-            </div>
-        </div>
-        <!--MODAL INCORPORAR VIDEO-->
-  <div class="modal" id="Modal10000">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content bg-dark">                                                          
-        <!-- CABEZA DEL MODAL -->
-        <div class="modal-header bg-danger">
-          <div class="col-12">
-            <h4 class="text-white"> ¿Que es una Incorporación?</h4>
-          </div>
-        </div>
-                                                              
-        <!-- CUERPO DEL MODAL -->
-          <div class="modal-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-1"></div>
-                        <div class="col-10">
-                            <h5 class="text-white">Aqui podremos econtrar nuestra Incorporación del video que queremos subir:</h5>
-                            <br>
-                            <p class="text-white"> Antes que todo hay que tener en cuenta que el video que quieres subir tiene que antes haberse subido a Youtube.</p> 
-                            <br>
-                            <h6 class="text-white">Paso numero uno:</h6>
-                            <img src="img/incorporacion/1.png" class="img-fluid" alt="1">
-                            <p class="text-white">En primer lugar habrá que seleccionar la opción compartir video, del video que se quiere subir , todo desde la página de YouTube.</p> 
-                            <br>
-                            <h6 class="text-white">Paso numero dos:</h6>
-                            <img src="img/incorporacion/2.png" class="img-fluid" alt="2">
-                            <p class="text-white"> En segundo lugar habrá que seleccionar la opción de Incorporación.</p> 
-                            <br>
-                            <h6 class="text-white">Paso numero tres:</h6>
-                            <img src="img/incorporacion/3.png" class="img-fluid" alt="3">
-                            <p class="text-white"> Y por ultimo habrá que copiar el texto que saldrá en el recuadro que estará entre las comillas del src, este será la incorporación.</p> 
-                        </div>
-                        <div class="col-1"></div>
-                    </div>
-              </div>
-            </div> 
-          </div> 
-          <!-- PIE DE MODAL -->
-          <div class="modal-footer">
-            <div class="row">
-              <div class="col-12">
-                <button type="button" class="btn btn-danger btn-sm text-white" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-    </div>
+{% extends 'LineApp/p_inicio.html' %}
+{% load static %}
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    {% block titulo %}
+    <title>Subir video</title>
+    {% endblock titulo %}
+
+    {% block content %}
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+          <h1 class="text-white d-flex justify-content-start" style="text-align: center;">Subir video</h1>
+      </div>
+      <div class="col-3"></div>
+  </div>
+  <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-10 margin-top:10px;">
+          <!--------------------FORMULARIO DE SUBIR VIDEO----------------------->
+          <form action="{% url 'subirvideo' %}" method="POST" class="text-white" id="formsubirvideo">
+          {{ form.as_p }}
+          {% csrf_token %}
+          <p class="d-none text-white" id="msj-titul"> La descripcion tiene que tener entre 3 a 30 caracteres </p>
+          <p class="d-none text-white" id="msj-agente"> Seleccione un agente </p>
+          <p class="d-none text-white" id="msj-mapa"> Seleccione un mapa </p>
+          <p class="d-none text-white" id="msj-bando"> Seleccione un bando </p>
+          <p class="d-none text-white" id="msj-descripcion"> La descripción tiene que tener entre 3 a 200 caracteres </p>
+          <p class="d-none text-white" id="msj-incorporacion"> Tu incorporación es incorrecto </p>
+          <button type="submit" class="btn btn-danger">Subir</button>
+        </form>
+      </div>
+      <div class="col-md-1">
+      </div>
+  </div>
+  <!--MODAL INCORPORAR VIDEO-->
+<div class="modal" id="Modal10000">
+<div class="modal-dialog modal-xl">
+<div class="modal-content bg-dark">                                                          
+  <!-- CABEZA DEL MODAL -->
+  <div class="modal-header bg-danger">
+    <div class="col-12">
+      <h4 class="text-white"> ¿Que es una Incorporación?</h4>
+    </div>
+  </div>
+  <!-- CUERPO DEL MODAL -->
+    <div class="modal-body">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-10">
+                      <h5 class="text-white">Aqui podremos econtrar nuestra Incorporación del video que queremos subir:</h5>
+                      <br>
+                      <p class="text-white"> Antes que todo hay que tener en cuenta que el video que quieres subir tiene que antes haberse subido a Youtube.</p> 
+                      <br>
+                      <h6 class="text-white">Paso numero uno:</h6>
+                      <img src="img/incorporacion/1.png" class="img-fluid" alt="1">
+                      <p class="text-white">En primer lugar habrá que seleccionar la opción compartir video, del video que se quiere subir , todo desde la página de YouTube.</p> 
+                      <br>
+                      <h6 class="text-white">Paso numero dos:</h6>
+                      <img src="img/incorporacion/2.png" class="img-fluid" alt="2">
+                      <p class="text-white"> En segundo lugar habrá que seleccionar la opción de Incorporación.</p> 
+                      <br>
+                      <h6 class="text-white">Paso numero tres:</h6>
+                      <img src="img/incorporacion/3.png" class="img-fluid" alt="3">
+                      <p class="text-white"> Y por ultimo habrá que copiar el texto que saldrá en el recuadro que estará entre las comillas del src, este será la incorporación.</p> 
+                  </div>
+                  <div class="col-1"></div>
+              </div>
+        </div>
+      </div> 
+    </div> 
+    <!-- PIE DE MODAL -->
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-danger btn-sm text-white" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+</div>
+    {% endblock content %}
+
+    {% block script %}
     <script src="{% static 'LineApp/js/Validacion-subirvideo.js' %}"></script>
     <script src="{% static 'LineApp/js/info2.js' %}"></script>
-
-</body>
-</html>
+    {% endblock script %}

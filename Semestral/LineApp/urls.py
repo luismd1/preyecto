@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from .views import inicio,AcercaDe,config,perfil,ranking,registro,subirvideo,InicioSesion,editarperfil,f_registro,f_subirvideo
+from .views import inicio,AcercaDe,config,perfil,ranking,registro,subirvideo,editarperfil
+from django.contrib.auth.views import LoginView,LogoutView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('',inicio,name="inicio"),
@@ -9,9 +11,8 @@ urlpatterns = [
     path('perfil/',perfil,name="perfil"),
     path('ranking/',ranking,name="ranking"),
     path('registro/',registro,name="registro"),
-    path('subirvideo/',subirvideo,name="subirvideo"),
-    path('InicioSesion/',InicioSesion,name="InicioSesion"),
+    path('subirvideo/',login_required(subirvideo),name="subirvideo"),
     path('editarperfil/',editarperfil,name="editarperfil"),
-    path('f_registro/',f_registro,name="f_registro"),
-    path('f_subirvideo/',f_subirvideo,name="f_subirvideo"),
+    path('InicioSesion/', LoginView.as_view(template_name='LineApp/InicioSesion.html'), name='InicioSesion'),
+    path('logout/', LogoutView.as_view(template_name='LineApp/inicio.html'), name='logout'),
 ]

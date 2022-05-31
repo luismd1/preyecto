@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     const validacion = (e) => {
         switch (e.target.name) {
-            case "titul":
+            case "titulo":
                 validarCampo(expresiones.titulo, e.target, "titul");
                 break;
             case "descripcion":
@@ -64,8 +64,8 @@ $(document).ready(function () {
     }
 
     const validarSelect = (campo) => {
-        var sele = $("#sv-" + campo).val();
-        if (sele != "nada") {
+        var sele = $("#" + campo).val();
+        if (sele != -1) {
             $("#msj-" + campo).removeClass("d-block");
             $("#msj-" + campo).addClass("d-none");
             campos[campo] = true;
@@ -88,10 +88,7 @@ $(document).ready(function () {
     $("#formsubirvideo").submit(function () {
         event.preventDefault();
         if(campos.titul && campos.agente && campos.mapa && campos.bando && campos.descripcion && campos.incorporacion){
-            $("#mensaj-envio").removeClass("d-none");
-            $("#mensaj-envio").addClass("d-block");
-            $("#mensaj-error").addClass("d-none");
-            $("#mensaj-error").removeClass("d-block");
+            formulario.submit();
         }else{
             $("#mensaj-error").removeClass("d-none");
             $("#mensaj-error").addClass("d-block");

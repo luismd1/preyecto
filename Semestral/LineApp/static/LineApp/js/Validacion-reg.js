@@ -4,7 +4,7 @@ $(document).ready(function(e){
 
     const expresiones = {
         usuario: /^[a-zA-Z0-9\_\-]{5,20}$/, // Letras, numeros, guion y guion_bajo
-        password: /^[!"#$%&'()*+,\-./:;<=>?@\[\]^_`{|}~]?[a-zA-Z0-9]+[!"#$%&'()*+,\-./:;<=>?@\[\]^_`{|}~]+[a-zA-Z0-9]+[!"#$%&'()*+,\-./:;<=>?@\[\]^_`{|}~]?$/, // 5 a 20 digitos, con la primera letra mayuscula y terminando en punto.
+        password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,20}$/, // 5 a 20 digitos, con la primera letra mayuscula y terminando en punto.
         correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ // todo separado por un @ y terminando con punto algo
     }
     const campos = {
@@ -14,27 +14,23 @@ $(document).ready(function(e){
     }
     const validacion = (e) => {
         switch (e.target.name){
-            case "usuario" :
+            case "username" :
                 validarCampo(expresiones.usuario, e.target, "usu");
             break;
-            case "pass" :
+            case "password1" :
                 validarCampo(expresiones.password, e.target, "pass");
                 coincidir("pass");
             break;
-            case "pass2" :
+            case "password2" :
                 coincidir("pass");
             break;
             case "email" :
                 validarCampo(expresiones.correo, e.target, "email");
-                coincidir("email");
-            break;
-            case "email2" :
-                coincidir("email");
             break;
         }
     }
     const validarCampo = (expre, input, campo) => {
-        if(expre.test(input.value) && input.value.length > 5 && input.value.length < 21){
+        if(expre.test(input.value)){
             $("#reg-"+campo).removeClass("is-invalid");
             $("#reg-"+campo).addClass("is-valid");
             $("#msj-"+campo).removeClass("d-block");
@@ -76,10 +72,7 @@ $(document).ready(function(e){
         e.preventDefault();
         const termino = document.getElementById("terminos");
         if(campos.usu && campos.pass && campos.email && termino.checked){
-            formulario.reset();
-            $("#reg-enviado").removeClass("d-none");
-            $("#reg-enviado").addClass("d-block");
-            $("input").removeClass("is-valid");
+            formulario.submit();
         }else{
             $("#reg-error").removeClass("d-none");
             $("#reg-error").addClass("d-block");

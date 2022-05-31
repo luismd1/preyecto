@@ -1,174 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="icon" href="{% static 'LineApp/img/AppIcono.png' %}">
-    <link rel="stylesheet" href="{% static 'LineApp/css/ranking.css' %}">
-</head>
-<body class="bg">
-    <div class="container bg-dark">
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'inicio' %}">
-                    <img src="{% static 'LineApp/img/AppIcono.png' %}" class="icono" alt="">
-                </a>
-                <a class="navbar-brand" href="{% url 'inicio' %}" id="titulo">Line App</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'ranking' %}">Clasificación</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'AcercaDe' %}">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bi bi-upload text-danger" href="{% url 'subirvideo' %}"> Subir Video</a>
-                    </li>
-                    </ul>
-                </div>
-                </div>
-                <div class="dropdown bg-dark float-end">
-                    <button class="btn btn-secondary dropdown-toggle bg-dark border border-danger" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-dark" style="z-index: 9999;" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{% url 'InicioSesion' %}">Iniciar sesion</a>
-                    <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
-                    <a class="dropdown-item" href="{% url 'config' %}">Configuración</a>
-                    <a class="dropdown-item" href="#">Salir</a>
-                    </div>
-                </div>
-            </nav>            
+{% extends 'LineApp/p_inicio.html' %}
+{% load static %}
+
+    {% block titulo %}
+    <title>Clasificación</title>
+    {% endblock titulo %}
+
+    {% block content %}
+    <!-- Perfil 1 -->
+    <div class="card border-danger bg-dark text-white">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 1 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar1.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>SebasXZ</h4></div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 1 -->
-        <div class="card border-danger bg-dark text-white">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 1 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar1.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>SebasXZ</h4></div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <!-- Perfil 2 -->
+
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 2 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar2.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>Mateo_EA</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 2 -->
+    <!-- Perfil 3 -->
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 2 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar2.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>Mateo_EA</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 3 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar3.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>JuanLT</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
+    
+    <!-- Perfil 4 -->
 
-        <!-- Perfil 3 -->
-
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 3 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar3.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>JuanLT</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 4 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar10.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>-.Carla.-</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
-        
-        <!-- Perfil 4 -->
+    </div>
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 4 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar10.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>-.Carla.-</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <!-- Perfil 5 -->
+
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 5 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar4.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>Chorocras</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 5 -->
+    <!-- Perfil 6 -->
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 5 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar4.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>Chorocras</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 6 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar5.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>Lucky15s</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 6 -->
+    <!-- Perfil 7 -->
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 6 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar5.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>Lucky15s</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 7 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar6.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>Maxfull</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 7 -->
+    <!-- Perfil 8 -->
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 7 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar6.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>Maxfull</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 8 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar7.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>!Wilson.-.</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 8 -->
+    <!-- Perfil 9 -->
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 8 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar7.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>!Wilson.-.</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2 ">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 9 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar8.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>!NewZak</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
 
-        <!-- Perfil 9 -->
+    <!-- Perfil 10 -->
 
-        <div class="card border-danger bg-dark text-white mt-2 ">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 9 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar8.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>!NewZak</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
+    <div class="card border-danger bg-dark text-white mt-2">
+        <div class="row mt-3">
+            <div class="col-2 col-md-1"><h4 style="text-align: center;"> 10 </h4></div>
+            <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar9.jpg' %}" alt="" class="icono"></a></div>
+            <div class="col-4 col-md-5"><h4>Marco_FR</h4> </div>
+            <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
         </div>
+    </div>
+    {% endblock content %}
 
-        <!-- Perfil 10 -->
-
-        <div class="card border-danger bg-dark text-white mt-2">
-            <div class="row mt-3">
-                <div class="col-2 col-md-1"><h4 style="text-align: center;"> 10 </h4></div>
-                <div class="col-1 col-md-1 d-flex justify-content-center"><a><img src="{% static 'LineApp/img/Ranking/Avatar9.jpg' %}" alt="" class="icono"></a></div>
-                <div class="col-4 col-md-5"><h4>Marco_FR</h4> </div>
-                <div class="col-5 col-md-5 d-grid gap-2 d-md-flex justify-content-md-end"><a class="btn btn-danger margin" href="{% url 'perfil' %}" role="button">Ver Perfil</a></div>
-            </div>
-        </div>
-
-    </div> <!-- div del class="container" negro -->
-</body>
-
-</html>
+    {% block script %}
+    {% endblock script %}
