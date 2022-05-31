@@ -2,6 +2,7 @@ from cProfile import label
 from tkinter import Widget
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Lineup
 
@@ -74,3 +75,9 @@ class VideoForm(forms.ModelForm):
                 'id': 'incorporacion',
             }),
         }
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label='Nombre de usuario',
+                                widget=forms.TextInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Nombre de usuario'}))
+    password = forms.CharField(label='Contraseña',
+                                widget=forms.PasswordInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Contraseña'}))

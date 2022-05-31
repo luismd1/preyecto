@@ -2,11 +2,9 @@ from email import message
 from django.shortcuts import render, redirect
 from LineApp.models import Lineup
 from django.contrib import messages
-from .forms import UserForm, VideoForm
+from .forms import UserForm, VideoForm, LoginForm
 from django.contrib.auth.models import User
-
-def inicio(request):
-    return render(request,'LineApp/inicio.html')
+from django.contrib.auth.views import LoginView
 
 def AcercaDe(request):
     return render(request,'LineApp/AcercaDe.html')
@@ -38,6 +36,8 @@ def registro(request):
 
     # HTML INICIO
 def inicio(request):
+    if request.user.is_staff:
+        return redirect('inicioadmin')
     data = {"lista":Lineup.objects.all().order_by('idLine')[0:12],"lista2":Lineup.objects.all().order_by('idLine')[13:24],"lista3":Lineup.objects.all().order_by('idLine')[25:36]}
     return render(request,'LineApp/inicio.html',data)
 
@@ -56,8 +56,15 @@ def subirvideo(request):
     contexto = { 'form' : form }
     return render(request,'LineApp/subirvideo.html', contexto)
 
-def InicioSesion(request):
-    return render(request,'LineApp/InicioSesion.html')
+class CustomLoginView(LoginView):
+    template_name = 'LineApp/InicioSesion.html'
+    form_class = LoginForm
 
 def editarperfil(request):
     return render(request,'LineApp/editarperfil.html')
+
+def inicioadmin(request):
+    if request.user.is_staff:
+        return render(request,'LineApp/inicioadmin.html')
+    else:
+        return redirect(request,'inicio')
