@@ -38,7 +38,7 @@ def registro(request):
 
     # HTML INICIO
 def inicio(request):
-    data = {"lista":Lineup.objects.all().order_by('idLine')[0:12],"lista2":Lineup.objects.all().order_by('idLine')[13:24],"lista3":Lineup.objects.all().order_by('idLine')[25:36]}
+    data = {"lista":Lineup.objects.all().order_by('idLine')[0:16],"lista2":Lineup.objects.all().order_by('idLine')[17:32]}
     return render(request,'LineApp/inicio.html',data)
 
 

@@ -159,3 +159,9 @@ iframe{
     background-size: cover;
     background-position: center center;
 }
+
+.campo{
+    background-image: url(../img/Mapas/campo.jpeg);
+    background-size: cover;
+    background-position: center center;
+}
