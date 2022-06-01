@@ -24,7 +24,7 @@ def ranking(request):
 def registro(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
-        if request.user.is_authenticated:
+        if form.is_valid():
             form.save()
             nick1 = form.cleaned_data['username']
             messages.success(request, f'Usuario {nick1} creado con exito')
