@@ -139,3 +139,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'inicio'
 LOGOUT_REDIRECT_URL = 'inicio'
 LOGIN_URL = 'InicioSesion'
+
+#CON ESTO VA A FUNCIONAR LA PAGINA
+# pip install git+https://github.com/beachmachine/django-userforeignkey.git
