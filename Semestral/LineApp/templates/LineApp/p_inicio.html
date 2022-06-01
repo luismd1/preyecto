@@ -41,11 +41,11 @@
                 <a class="nav-link" href="{% url 'AcercaDe' %}">Acerca de</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link bi bi-upload text-danger" href="{% url 'subirvideo' %}"> Subir video</a>
+                <a class="nav-link bi bi-upload text-danger" href="{% url 'subirvideo' %}">Subir video</a>
             </li>
             {% if request.user.is_staff %}
                 <li class="nav-item">
-                    <a class="nav-link bi bi-trash text-danger"  href="{% url 'listar' %}"> Eliminar videos</a>
+                    <a class="nav-link bi bi-pencil-square text-danger"  href="{% url 'listar' %}">Modificar videos</a>
                 </li>
             {% endif %}
             </ul>

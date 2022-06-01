@@ -30,6 +30,25 @@ class UserForm(UserCreationForm):
                 'id': 'reg-email'})
         }
 
+class EditUserForm(UserCreationForm):
+    password1 = forms.CharField(label='Contraseña nueva',widget=forms.PasswordInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Contraseña','id':'reg-pass'}))
+    password2 = forms.CharField(label='Contraseña confirmar',widget=forms.PasswordInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Contraseña','id':'reg-pass2'}))
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
+        help_texts = {k: "" for k in fields}
+        labels = {
+            'username': 'Nombre de usuario',
+            'password1': 'Contraseña actual',
+            'password2': 'Contraseña nueva',
+        }
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control bg-dark text-white',
+                'placeholder': 'Nombre de usuario',
+                'id': 'reg-usu'}),
+        }
+
 class VideoForm(forms.ModelForm):
 
     class Meta:

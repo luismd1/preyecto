@@ -19,49 +19,10 @@
             <!--usuario-->
             <div class="row">
                 <div class="col-12">
-                    <form action="" name="edi" id="edi" method="post">
-                        <div class="form-floating">
-                        <input type="text" class="form-control bg-dark text-white" name="usuario" id="edi-usu" placeholder="Usuario" value="usuario123" >
-                        <label for="floatingInput" class="text-white">Usuario</label>
-                        <p class="d-none text-white" id="msj-usu">El usuario tiene que ser de 5 a 20 dígitos y solo puede contener numeros, letras, guion y guion bajo.</p>
-                        </div>
-                        <br>
-                    <!--contrasena-->
-                    <div class="form-floating">
-                        <input type="password" class="form-control bg-dark text-white" name="pass" id="edi-pass" placeholder="contraseña" value="Usuario123." >
-                        <label for="floatingPassword" class="text-white">contraseña</label>
-                        <p class="d-none text-white" id="msj-pass">La contraseña tiene que ser de 5 a 20 dígitos, la primera letra debe ser mayuscula y debe terminar en punto</p>
-                    </div>
-                    <br>
-                    <!--confirmar contrasena-->
-                    <div class="form-floating">
-                        <input type="password" class="form-control bg-dark text-white" name="pass2" id="edi-pass2" placeholder="confirme su contraseña"  value="Usuario123.">
-                        <label for="floatingPassword" class="text-white">confirme su contraseña</label>
-                        <p class="d-none text-white" id="msj-pass2">Ambas contraseñas tienen que coincidir</p>
-                    </div>
-                    <br>
-                    <!--correo-->
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control bg-dark text-white" name="email" id="edi-email" placeholder="nombre@ejemplo.com"  value="usuario123@gmail.com">
-                        <label for="floatingInput" class="text-white">Correo electronico</label>
-                        <p class="d-none text-white" id="msj-email">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
-                    </div>
-                    <br>
-                    <!--confirmar correo-->
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control bg-dark text-white" name="email2" id="edi-email2" placeholder="nombre@ejemplo.com" value="usuario123@gmail.com">
-                        <label for="floatingInput" class="text-white">Confirme su correo electronico</label>
-                        <p class="d-none text-white" id="msj-email2">Ambos correos tienen que coincidir.</p>
-                    </div>
-                    <div class="alert alert-success alert-dismissible d-none" id="edi-enviado">
-                        <button type="button" class="btn-close" id="btn-enviado"></button>
-                        <strong>Formulario enviado,</strong> todos los campos fueron completados exitosamente.
-                    </div>
-                    <div class="alert alert-danger alert-dismissible d-none" id="edi-error">
-                        <button type="button" class="btn-close" id="btn-error"></button>
-                        <strong>Error:</strong> Complete los campos para registrarse.
-                    </div>
-                    <button type="submit" class="btn btn-danger">Guardar</button>
+                    <form action="{% url 'act_perfil' %}" method="post" class="text-white">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <button class="btn btn-danger">Cambiar</button>
                     </form>
                 </div>
 

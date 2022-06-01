@@ -27,12 +27,11 @@
                     <div class="col-sm-6">
                         <div class="container text-white" id="container1">
                             
-                        <p class="name"> Nombre : Luis</p>
+                        <p class="name"> Nombre : {{ request.user.username }}</p>
                         
-                        <a href="#" class="mail text-white"> Correo : Luis123@gmail.com</a>
+                        <p href="#" class="mail text-white"> Correo : {{ request.user.email }}</p>
                         <br>
                         <br>
-                        <p class="name"> Valorant : Luisasdasd</p>
                         <br><br>
                     </div>
                     </div>

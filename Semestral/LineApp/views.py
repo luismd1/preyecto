@@ -2,7 +2,7 @@ from email import message
 from django.shortcuts import get_object_or_404, render, redirect
 from LineApp.models import Lineup
 from django.contrib import messages
-from .forms import UserForm, VideoForm,  LoginForm
+from .forms import UserForm, VideoForm,  LoginForm, EditUserForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 
@@ -56,11 +56,36 @@ def subirvideo(request):
     contexto = { 'form' : form }
     return render(request,'LineApp/subirvideo.html', contexto)
 
+def editarVideo(request,idLine):
+    video = Lineup.objects.get(pk=idLine)
+    form = VideoForm(instance=video)
+
+    return render(request,'LineApp/editarvideo.html',{'form':form, 'video':video})
+
+def act_video(request,idLine):
+    video = Lineup.objects.get(pk=idLine)
+    form = VideoForm(request.POST, instance=video)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Video actualizado con exito')
+        return redirect(to="listar")
+
 def InicioSesion(request):
     return render(request,'LineApp/InicioSesion.html')
 
 def editarperfil(request):
-    return render(request,'LineApp/editarperfil.html')
+    user = User.objects.filter(id=request.user.id).first()
+    form = EditUserForm(instance = user)
+
+    return render(request,'LineApp/editarperfil.html',{'form':form, 'user':user})
+
+def act_perfil(request):
+    user = User.objects.get(id=request.user.id)
+    form = UserForm(request.POST, instance=user)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Perfil actualizado con exito')
+        return redirect(to="perfil")
 
 def listar(request):
     videos= Lineup.objects.all()
