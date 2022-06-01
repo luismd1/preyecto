@@ -43,6 +43,11 @@
             <li class="nav-item">
                 <a class="nav-link bi bi-upload text-danger" href="{% url 'subirvideo' %}"> Subir video</a>
             </li>
+            {% if request.user.is_staff %}
+                <li class="nav-item">
+                    <a class="nav-link bi bi-trash text-danger"  href="{% url 'listar' %}"> Eliminar videos</a>
+                </li>
+            {% endif %}
             </ul>
         </div>
         </div>
