@@ -81,8 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/xe',
-        'USER': 'semestral',
-        'PASSWORD': 'lineapp',
+        'USER': 'lineapp',
+        'PASSWORD': 'minecraft',
         'TEST': {
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
@@ -142,7 +142,3 @@ LOGIN_URL = 'InicioSesion'
 
 #CON ESTO VA A FUNCIONAR LA PAGINA
 # pip install git+https://github.com/beachmachine/django-userforeignkey.git
-
-
-
-

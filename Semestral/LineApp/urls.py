@@ -1,14 +1,17 @@
 from django.contrib import admin
 from django.urls import path
-from .views import CustomLoginView,inicio,AcercaDe,config,perfil,ranking,registro,subirvideo,editarperfil,listar,eliminar_video, act_perfil, editarVideo, act_video
+from .views import CustomLoginView,inicio,AcercaDe,config,perfil,ranking,registro,subirvideo,editarperfil,listar,eliminar_video, act_perfil, editarVideo, act_video, v_perfil, m_perfil, filtro
 from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('',inicio,name="inicio"),
+    path('filtro/<str:agen>',filtro,name="filtro"),
     path('AcercaDe/',AcercaDe,name="AcercaDe"),
     path('config/',config,name="config"),
     path('perfil/',perfil,name="perfil"),
+    path('v_perfil/',v_perfil,name="v_perfil"),
+    path('m_perfil/',m_perfil,name="m_perfil"),
     path('ranking/',ranking,name="ranking"),
     path('registro/',registro,name="registro"),
     path('subirvideo/',login_required(subirvideo),name="subirvideo"),

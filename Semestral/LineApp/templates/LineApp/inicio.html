@@ -6,6 +6,13 @@
     {% endblock titulo %}
 
     {% block content %}
+    {% if request.user.is_staff %}
+    <div class="row">
+      <div class="container bg-danger margin-left:30%">
+        <h1 id="titulo" class="text-white d-flex justify-content-center"> vista de Moderador</h1> 
+    </div>
+    </div>
+    {% endif %}
     <!--SEGUNDA FILA DE CONTENIDO-->
     <div class="row sticky-top">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

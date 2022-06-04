@@ -10,6 +10,7 @@
         <table class=" table table-stripped table-hover table-responsive-sm">
 
             <tr>
+                <th class="text-white">Video</th>
                 <th class="text-white">Titulo</th>
                 <th class="text-white">Descripcion</th>
                 <th class="text-white">Eliminar</th>
@@ -19,6 +20,7 @@
             
             {% for v in videos %}
             <tr>
+                <td class="text-white"><iframe src="{{ v.incorporacion }}" frameborder="0"></iframe></td>
                 <td class="text-white">{{ v.titulo | title }}</td>
                 <td class="text-white">{{ v.descripcion }}</td>
                 <td > <a href="{% url 'eliminar_video' v.idLine %}" class="btn bg-danger text-white btn-sm "> Eliminar </a></td>

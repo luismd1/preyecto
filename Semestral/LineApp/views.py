@@ -15,7 +15,19 @@ def config(request):
     return render(request,'LineApp/config.html')
 
 def perfil(request):
-    return render(request,'LineApp/perfil.html')
+    data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2]}
+    return render(request,'LineApp/perfil.html', data)
+
+def v_perfil(request):
+    data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')}
+    return render(request,'LineApp/perfil.html', data)
+
+def  m_perfil(request):
+    videos = Lineup.objects.filter(usuario=request.user.id).order_by('idLine')
+    data ={
+        'videos':videos
+    }
+    return render (request,'LineApp/listar.html',data)
 
 def ranking(request):
     return render(request,'LineApp/ranking.html')
@@ -41,6 +53,9 @@ def inicio(request):
     data = {"lista":Lineup.objects.all().order_by('idLine')[0:16],"lista2":Lineup.objects.all().order_by('idLine')[17:32]}
     return render(request,'LineApp/inicio.html',data)
 
+def filtro(request, agen):
+    data = {"lista": Lineup.objects.filter(agente=agen).order_by('idLine')[:16]}
+    return render(request,'LineApp/inicio.html', data)
 
 def subirvideo(request):
     if request.method == 'POST':
