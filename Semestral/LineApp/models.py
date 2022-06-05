@@ -20,3 +20,7 @@ class Lineup (models.Model):
     def __str__(self):
         return self.titulo
 
+class Avatar (models.Model):
+    idAvatar = models.AutoField(primary_key=True, verbose_name="Id del Avatar")
+    avatar = models.ImageField(upload_to = "avatars",null= True)
+    usuario = UserForeignKey(auto_user_add=True, verbose_name="Usuario")
