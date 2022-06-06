@@ -20,6 +20,11 @@
         <div class="card-header">
             <br>
             <img src="{% static 'LineApp/img/perfil.png' %}"  id="perfil-img" height="200px" width="200px">
+            <form action="{% url 'perfil' %}" method="POST" class="text-white" >
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger text-white">Subir</button>
+            </form>
             <br><br><br><br>
         </div>
         <div class="card-body">

@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Lineup
+from .models import Avatar
 
 class UserForm(UserCreationForm):
     password1 = forms.CharField(label='Contraseña',widget=forms.PasswordInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Contraseña','id':'reg-pass'}))
@@ -100,3 +101,16 @@ class LoginForm(AuthenticationForm):
                                 widget=forms.TextInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Nombre de usuario'}))
     password = forms.CharField(label='Contraseña',
                                 widget=forms.PasswordInput(attrs={'class': 'form-control bg-dark text-white','placeholder':'Contraseña'}))
+
+
+class SubirAvatarForm(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ['avatar']
+        labels = {
+            'avatar':'Avatar',
+        }
+        widgets = {
+            'avatar' : forms.FileInput(),
+        }
+

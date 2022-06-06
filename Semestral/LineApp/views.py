@@ -2,7 +2,7 @@ from email import message
 from django.shortcuts import get_object_or_404, render, redirect
 from LineApp.models import Lineup
 from django.contrib import messages
-from .forms import UserForm, VideoForm,  LoginForm, EditUserForm
+from .forms import UserForm, VideoForm,  LoginForm, EditUserForm,SubirAvatarForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 
@@ -15,7 +15,17 @@ def config(request):
     return render(request,'LineApp/config.html')
 
 def perfil(request):
-    data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2]}
+    if request.method== 'POST':
+        form = SubirAvatarForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Imagen actualizada con exito')
+            return redirect('perfil')
+        else: 
+            messages.error(request, f'Ha ocurrido un error con la imagen')
+            return redirect('perfil')
+    form = SubirAvatarForm()
+    data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2],'form':form}
     return render(request,'LineApp/perfil.html', data)
 
 def v_perfil(request):
@@ -93,6 +103,9 @@ def editarperfil(request):
     form = EditUserForm(instance = user)
 
     return render(request,'LineApp/editarperfil.html',{'form':form, 'user':user})
+
+
+
 
 def act_perfil(request):
     user = User.objects.get(id=request.user.id)
