@@ -4,7 +4,7 @@ $(document).ready(function () {
             let puesto = "";
             $.each(data.data ,function(i, item){
                 puesto = "avatar"+i;
-                $("#"+puesto).html('<a class="dropdown-item" href="{% url \'filtro\' '+item.displayName+' %}"><img class="avatar" src="'+item.displayIconSmall+'"></a>');
+                $("#"+puesto).html('<a class="dropdown-item" href="/filtroAgen/'+ item.displayName +'"><img class="avatar" src="'+item.displayIconSmall+'"></a>');
             });
         });
     });

@@ -71,20 +71,20 @@
                 </a>
                 <ul id="dropdown-menu-mapa" class="dropdown-menu dropdown-menu-dark"
                   aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item ascent" href="#">ASCENT</a></li>
-                  <li><a class="dropdown-item bind" href="#">BIND</a></li>
-                  <li><a class="dropdown-item breeze" href="#">BREEZE</a></li>
-                  <li><a class="dropdown-item haven" href="#">HAVEN</a></li>
-                  <li><a class="dropdown-item icebox" href="#">ICEBOX</a></li>
-                  <li><a class="dropdown-item split" href="#">SPLIT</a></li>
-                  <li><a class="dropdown-item fracture" href="#">FRACTURE</a></li>
+                  <li><a class="dropdown-item Ascent" href="/filtroMapa/Ascent">ASCENT</a></li>
+                  <li><a class="dropdown-item Bind" href="/filtroMapa/Bind">BIND</a></li>
+                  <li><a class="dropdown-item Breeze" href="/filtroMapa/Breeze">BREEZE</a></li>
+                  <li><a class="dropdown-item Haven" href="/filtroMapa/Haven">HAVEN</a></li>
+                  <li><a class="dropdown-item Icebox" href="/filtroMapa/Icebox">ICEBOX</a></li>
+                  <li><a class="dropdown-item Split" href="/filtroMapa/Split">SPLIT</a></li>
+                  <li><a class="dropdown-item Fracture" href="/filtroMapa/Fracture">FRACTURE</a></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">ATK</a>
+                <a class="nav-link" href="/filtroBando/1">ATK</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">DEF</a>
+                <a class="nav-link" href="/filtroBando/2">DEF</a>
               </li>
             </ul>
           </div>
@@ -101,7 +101,7 @@
           <div class="card border-danger bg-dark text-white">
             <!-- mapa a renderizar -->
             
-            <div id ="{{ Lineup.idLine }}" class="card-header">
+            <div id ="{{ Lineup.idLine }}" class="card-header {{ Lineup.mapa }}">
               <img src="../../static/LineApp/img/Avatar/{{ Lineup.agente }}.png" alt="avatar" class="avatar" >
             </div>
             <iframe height="230" src="{{ Lineup.incorporacion }}" title="YouTube video player"
@@ -126,7 +126,7 @@
                   <div class="modal-content bg-dark">
                     
                     <!-- CABEZA DEL MODAL -->
-                    <div id ="modal_avatar{{ Lineup.idLine }}" class="modal-header">
+                    <div id ="modal_avatar{{ Lineup.idLine }}" class="modal-header {{ Lineup.mapa }}">
                       <div class="col-sm-3">
                         <img src="../../static/LineApp/img/Avatar/{{ Lineup.agente }}.png" alt="avatar" class="avatar">
                       </div>
@@ -166,10 +166,8 @@
                         </div>
                         <div class="col-sm-6">
                           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-danger"><i class="bi bi-emoji-frown"></i></button>
-                            <button type="button" class="btn btn-warning"><i class="bi bi-emoji-neutral"></i></button>
-                            <button type="button" class="btn btn-success"><i
-                                class="bi bi-emoji-heart-eyes"></i></button>
+                            <button type="button" class="btn btn-primary"><i class="bi bi-hand-thumbs-up"></i></button>
+                            <button type="button" class="btn btn-danger"><i class="bi bi-hand-thumbs-down"></i></button>
                           </div>
                         </div>
                       </div>
@@ -219,39 +217,7 @@
    
     {% endblock content %}
 
-    {% for Lineup in lista %}
+
     {% block script %}
     <script src="{% static 'LineApp/js/Info.js' %}"></script>
-    <script>
-
-    $(document).ready(function(){
-        // definir contador
-        let cont = 1
-        // clases => . 
-        // id => # 
-        // each por cada uno 
-        $(".mapa_variable").each(function(){
-          // guardamos variable, con this sacamos el mismo objecto, sacamos el valor
-          // y pasamos todo a minusculas
-          var mapName = $(this).val().toLowerCase()
-          // acá imprimimos la variable para saber si está todo ok
-          // console.log("el mapa es -> " + mapName) imprimer por pantalla lo que estoy pidiendo
-          // concatenamos, pasamos el contador... añadimos la clase que obtenemos en la linea 226
-          $("#"+cont).addClass(mapName)
-          $("#modal_avatar"+cont).addClass(mapName)
-          // Aumentamos el contador para poder pasar a la siguiente card
-          cont = cont + 1
-        })
-
-        // $(".mapa_variable").each(function(){
-        //   var counter = 1
-        //   var mapName = $(this).val().toLowerCase()
-        //   var id = "#modal_avatar"+counter
-        //   $(id).addClass(mapName)
-        // })
-      })
-
-    </script> 
     {% endblock script %}
-    {% endfor %}
-    

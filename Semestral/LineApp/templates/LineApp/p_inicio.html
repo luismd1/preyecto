@@ -59,7 +59,6 @@
         <div class="dropdown-menu dropdown-menu-dark" style="z-index: 9999;" aria-labelledby="dropdownMenuButton">
             {% if request.user.is_authenticated %}
             <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
-            <a class="dropdown-item" href="{% url 'config' %}">Configuración</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
             {% else %}
             <a class="dropdown-item" href="{% url 'InicioSesion' %}">Iniciar sesion</a>
@@ -83,7 +82,7 @@
 
     <!-- Derechos Videos -->
     <div class="row" style="margin-top: 150px; text-align: center;">
-    <p class="text-muted">Agradecimientos a <a href="http://www.hitboxking.com" class="text-muted">HITBOXKING.com</a>,
+    <p class="text-muted">Agradecimientos a <a href="http://www.hitboxking.com" target="_blank" class="text-muted">HITBOXKING.com</a>,
         todos los derechos de los videos le pertecen a ese dominio.</p>
     </div>
 </div>

@@ -26,6 +26,7 @@ def perfil(request):
             return redirect('perfil')
     form = SubirAvatarForm()
     data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2],'form':form}
+    data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2]}
     return render(request,'LineApp/perfil.html', data)
 
 def v_perfil(request):
@@ -63,9 +64,27 @@ def inicio(request):
     data = {"lista":Lineup.objects.all().order_by('idLine')[0:16],"lista2":Lineup.objects.all().order_by('idLine')[17:32]}
     return render(request,'LineApp/inicio.html',data)
 
-def filtro(request, agen):
+def filtroAgen(request, agen):
     data = {"lista": Lineup.objects.filter(agente=agen).order_by('idLine')[:16]}
     return render(request,'LineApp/inicio.html', data)
+
+def filtroMapa(request, mapa):
+    data = {"lista": Lineup.objects.filter(mapa=mapa).order_by('idLine')[:16]}
+    return render(request,'LineApp/inicio.html', data)
+
+def filtroBando(request, band):
+    data = {"lista": Lineup.objects.filter(bando=band).order_by('idLine')[:16]}
+    return render(request,'LineApp/inicio.html', data)
+
+def like(request, idLine):
+    if request.method == 'POST':
+        idLine = request.POST.get('idLine')
+        video = Lineup.objects.get(pk=idLine)
+        video.likes = video.likes + 1
+        video.save()
+        messages.success(request, 'Video actualizado con exito')
+        return redirect(to="listar")
+    return render(request,'LineApp/like.html')
 
 def subirvideo(request):
     if request.method == 'POST':
@@ -103,9 +122,6 @@ def editarperfil(request):
     form = EditUserForm(instance = user)
 
     return render(request,'LineApp/editarperfil.html',{'form':form, 'user':user})
-
-
-
 
 def act_perfil(request):
     user = User.objects.get(id=request.user.id)
