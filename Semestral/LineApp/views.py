@@ -5,6 +5,8 @@ from django.contrib import messages
 from .forms import UserForm, VideoForm,  LoginForm, EditUserForm,SubirAvatarForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
+from django.views.generic.base import View
 
 
 
@@ -147,3 +149,61 @@ def eliminar_video(request,idLine):
 class CustomLoginView(LoginView):
     template_name = 'LineApp/InicioSesion.html'
     form_class = LoginForm
+
+class like(View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Lineup.objects.get(pk=pk)
+
+        is_dislike = False
+        for dislike in post.dislike.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        
+        if is_dislike:
+            post.dislike.remove(request.user)
+
+        is_like = False
+        for like in post.like.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if not is_like:
+            post.like.add(request.user)
+
+        if is_like:
+            post.like.remove(request.user)
+
+        next = request.GET.get('next', '/')
+
+        return HttpResponseRedirect(next)
+
+class dislike(View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Lineup.objects.get(pk=pk)
+
+        is_like = False
+        for like in post.like.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if is_like:
+            post.like.remove(request.user)
+
+        is_dislike = False
+        for dislike in post.dislike.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        
+        if not is_dislike:
+            post.dislike.add(request.user)
+
+        if is_dislike:
+            post.dislike.remove(request.user)
+
+        next = request.GET.get('next', '/')
+
+        return HttpResponseRedirect(next)

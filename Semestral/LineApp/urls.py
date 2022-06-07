@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django.urls import path
-from .views import CustomLoginView,inicio,AcercaDe,config,perfil,ranking,registro,subirvideo,editarperfil,listar,eliminar_video, act_perfil, editarVideo, act_video, v_perfil, m_perfil, filtroAgen, filtroMapa, filtroBando
+from .views import CustomLoginView,inicio,AcercaDe,config,perfil,ranking,registro,subirvideo,editarperfil,listar,eliminar_video, act_perfil, editarVideo, act_video, v_perfil, m_perfil, filtroAgen, filtroMapa, filtroBando, like,dislike
 from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('',inicio,name="inicio"),
+    path('like/<int:pk>',like.as_view(),name="like"),
+    path('dislike/<int:pk>',dislike.as_view(),name="dislike"),
     path('filtroAgen/<str:agen>',filtroAgen,name="filtroAgen"),
     path('filtroMapa/<str:mapa>',filtroMapa,name="filtroMapa"),
     path('filtroBando/<int:band>',filtroBando,name="filtroBando"),

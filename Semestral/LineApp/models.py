@@ -1,5 +1,6 @@
 from django.db import models
 from django_userforeignkey.models.fields import UserForeignKey
+from django.contrib.auth.models import User
 
 lista = [(-1,"Seleccionar")]
 bando = [(-1,"Seleccionar")
@@ -14,8 +15,8 @@ class Lineup (models.Model):
     bando = models.IntegerField(blank=False,null=False,verbose_name="Bando del line up",choices=bando,default=-1)
     descripcion = models.CharField(max_length=200,blank=False,null=False,verbose_name="Descripcion del line up")
     incorporacion = models.CharField(max_length=200,blank=False,null=False,verbose_name="Incorporacion del line up")
-    like = models.IntegerField(default=0,verbose_name="Likes del line up")
-    dislike = models.IntegerField(default=0,verbose_name="Dislikes del line up")
+    like = models.ManyToManyField(User,blank=True,related_name='likes')
+    dislike = models.ManyToManyField(User,blank=True,related_name='dislikes')
     fecha = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creacion", null=True)
     usuario = UserForeignKey(auto_user_add=True, verbose_name="Usuario")
 

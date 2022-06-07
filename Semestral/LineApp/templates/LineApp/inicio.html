@@ -137,6 +137,7 @@
                       <div class="row">
                         <div class="col-sm-12">
                           <h5 class="card-title">{{ Lineup.titulo }}</h5>
+                          <h6 class="text-white">{{ Lineup.usuario.username }}</h6>
                         </div>
                       </div>
                       <div class="row">
@@ -165,8 +166,18 @@
                         </div>
                         <div class="col-sm-6">
                           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-primary"><i class="bi bi-hand-thumbs-up"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-hand-thumbs-down"></i></button>
+                            <form action="{% url 'like' Lineup.idLine %}" method="post">
+                              {% csrf_token %}
+                              <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-hand-thumbs-up"></i></button>
+                            </form>
+                            <p class="text-white">{{ Lineup.like.all.count }}</p>
+                            <form action="{% url 'dislike' Lineup.idLine %}" method="post">
+                              {% csrf_token %}
+                              <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" class="btn btn-danger"><i class="bi bi-hand-thumbs-down"></i></button>
+                            </form>
+                            <p class="text-white">{{ Lineup.dislike.all.count }}</p>
                           </div>
                         </div>
                       </div>
