@@ -24,5 +24,5 @@ class Lineup (models.Model):
 
 class Avatar (models.Model):
     idAvatar = models.AutoField(primary_key=True, verbose_name="Id del Avatar")
-    avatar = models.ImageField(upload_to = "avatars",null= True)
+    avatar = models.FileField(unique=True,upload_to = "avatars",null= True)
     usuario = UserForeignKey(auto_user_add=True, verbose_name="Usuario")

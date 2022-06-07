@@ -17,7 +17,7 @@ def config(request):
 def perfil(request):
     if request.method== 'POST':
         form = SubirAvatarForm(request.POST)
-        if form.is_valid():
+        if True:
             form.save()
             messages.success(request, f'Imagen actualizada con exito')
             return redirect('perfil')
@@ -26,7 +26,6 @@ def perfil(request):
             return redirect('perfil')
     form = SubirAvatarForm()
     data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2],'form':form}
-    data = {"videos": Lineup.objects.filter(usuario=request.user.id).order_by('idLine')[:2]}
     return render(request,'LineApp/perfil.html', data)
 
 def v_perfil(request):

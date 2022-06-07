@@ -110,7 +110,7 @@ class SubirAvatarForm(forms.ModelForm):
         labels = {
             'avatar':'Avatar',
         }
-        widgets = {
-            'avatar' : forms.FileInput(),
-        }
+    
 
+
+        
