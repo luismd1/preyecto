@@ -31,11 +31,12 @@
                     
                     <div class="col-sm-6">
                         <div class="container text-white" id="container1">
-                            <form action="{% url 'perfil' %}" method="POST" class="text-white" enctype="multipart/form-data">
+                            <!--<form action="{% url 'perfil' %}" method="POST" class="text-white" enctype="multipart/form-data">
                                 {{ form.as_p }}
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger text-white">Subir</button>
                             </form>
+                        -->
                             
                         <p class="name"> Nombre : {{ request.user.username }}</p>
                         
@@ -50,12 +51,12 @@
                     <div class="col-sm-6">
                         <br>
                         <div class="container bg-danger text-white" id="container0">                              
-                            <p class="text-white  ">Seguidores 34 | Seguidos 10 </p>
+                            <p class="text-white  ">Editar perfil</p>
                             
                         </div>
                         <div class="social-links text-white">
                             <div class="container" id="container1">
-                                <p class="name"> Editar perfil</p>
+                                
                                 <a  class="fa-solid fa-pen social-icon " href="{% url 'editarperfil' %}" role="button" id="social"  ></a>
                         </div>
                             </div>

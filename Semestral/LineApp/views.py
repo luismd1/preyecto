@@ -113,7 +113,10 @@ def act_video(request,idLine):
     if form.is_valid():
         form.save()
         messages.success(request, 'Video actualizado con exito')
-        return redirect(to="listar")
+        if request.user.is_staff:
+            return redirect(to="listar")
+        else:
+            return redirect(to="m_perfil")
 
 def InicioSesion(request):
     return render(request,'LineApp/InicioSesion.html')
@@ -144,7 +147,10 @@ def eliminar_video(request,idLine):
     videos.delete()
     videos = Lineup.objects.all()
     messages.success(request, 'Video eliminado con exito')
-    return redirect(to="listar")
+    if request.user.is_staff:
+        return redirect(to="listar")
+    else:
+        return redirect(to="m_perfil")
     
 class CustomLoginView(LoginView):
     template_name = 'LineApp/InicioSesion.html'
