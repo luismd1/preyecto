@@ -12,21 +12,13 @@ from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 @csrf_exempt
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 @permission_classes((IsAuthenticated,))
 def listado_Lineup(request):
     if request.method == 'GET':
         LineUps = Lineup.objects.all()
         serializer = LineupSerializers(LineUps,many=True)
         return Response(serializer.data)
-    elif request.method == 'POST':
-        data1 = JSONParser().parse(request)
-        serializer = LineupSerializers(data = data1)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))
@@ -44,17 +36,17 @@ def addLineUp(request):
 @permission_classes((IsAuthenticated,))
 def controlarLineUp(request,codigo):
     try:
-        L = Lineup.objects.get(idLine = idLine)
+        L = Lineup.objects.get(idLine = codigo)
     except Lineup.DoesNotExist:
         return Response(status = status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
-        serializer = LineupSerializers2(m)
+        serializer = LineupSerializers2(L)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
         data2 = JSONParser().parse(request)
-        serializer = LineupSerializers2(m,data = data2)
+        serializer = LineupSerializers2(L,data = data2)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -64,8 +56,3 @@ def controlarLineUp(request,codigo):
     elif request.method == 'DELETE':
         L.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
-    
-    
-
-    
-

@@ -77,15 +77,6 @@ def filtroBando(request, band):
     data = {"lista": Lineup.objects.filter(bando=band).order_by('idLine')[:16]}
     return render(request,'LineApp/inicio.html', data)
 
-def like(request, idLine):
-    if request.method == 'POST':
-        idLine = request.POST.get('idLine')
-        video = Lineup.objects.get(pk=idLine)
-        video.likes = video.likes + 1
-        video.save()
-        messages.success(request, 'Video actualizado con exito')
-        return redirect(to="listar")
-    return render(request,'LineApp/like.html')
 
 def subirvideo(request):
     if request.method == 'POST':
