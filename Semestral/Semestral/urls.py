@@ -22,6 +22,7 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('LineApp.urls')),
+    path('api/', include('api_rest.urls')),
 ]
 
 if settings.DEBUG:

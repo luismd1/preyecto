@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'LineApp',
     'django_userforeignkey',
+    'api_rest',
+    'rest_framework',
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
@@ -142,3 +146,9 @@ LOGIN_URL = 'InicioSesion'
 
 #CON ESTO VA A FUNCIONAR LA PAGINA
 # pip install git+https://github.com/beachmachine/django-userforeignkey.git
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
