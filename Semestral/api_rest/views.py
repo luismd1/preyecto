@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from LineApp.models import Lineup
-from .serializers import LineupSerializers, LineupSerializers2
+from .serializers import LineupSerializers
 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -24,7 +24,7 @@ def listado_Lineup(request):
 @permission_classes((IsAuthenticated,))
 def addLineUp(request):
     data1 = JSONParser().parse(request)
-    serializer = LineupSerializers2(data = data1)
+    serializer = LineupSerializers(data = data1)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status = status.HTTP_201_CREATED)
@@ -41,12 +41,12 @@ def controlarLineUp(request,codigo):
         return Response(status = status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
-        serializer = LineupSerializers2(L)
+        serializer = LineupSerializers(L)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
         data2 = JSONParser().parse(request)
-        serializer = LineupSerializers2(L,data = data2)
+        serializer = LineupSerializers(L,data = data2)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
