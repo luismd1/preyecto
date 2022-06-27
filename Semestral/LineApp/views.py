@@ -1,6 +1,6 @@
 from email import message
 from django.shortcuts import get_object_or_404, render, redirect
-from LineApp.models import Lineup
+from LineApp.models import Lineup, Comentario
 from django.contrib import messages
 from .forms import UserForm, VideoForm,  LoginForm, EditUserForm,SubirAvatarForm
 from django.contrib.auth.models import User
@@ -62,7 +62,7 @@ def registro(request):
 
     # HTML INICIO
 def inicio(request):
-    data = {"lista":Lineup.objects.all().order_by('idLine')[0:16],"lista2":Lineup.objects.all().order_by('idLine')[17:32]}
+    data = {"lista":Lineup.objects.all().order_by('idLine')[0:16],"lista2":Lineup.objects.all().order_by('idLine')[17:32], "comentarios": Comentario.objects.all()}
     return render(request,'LineApp/inicio.html',data)
 
 def filtroAgen(request, agen):
@@ -204,3 +204,11 @@ class dislike(View):
         next = request.GET.get('next', '/')
 
         return HttpResponseRedirect(next)
+
+def comentar(request, codigo):
+    line = Lineup.objects.get(pk=codigo)
+    comentario = request.POST['comen']
+
+    Comentario.objects.create(comen=comentario, usuario=request.user, lineUp=line)
+
+    return redirect('inicio')

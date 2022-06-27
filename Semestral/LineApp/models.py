@@ -2,7 +2,6 @@ from django.db import models
 from django_userforeignkey.models.fields import UserForeignKey
 from django.contrib.auth.models import User
 
-lista = [(-1,"Seleccionar")]
 bando = [(-1,"Seleccionar")
         ,(1,"ATK")
         ,(2,"DEF")]
@@ -22,6 +21,15 @@ class Lineup (models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Comentario (models.Model):
+    idComentario = models.AutoField(primary_key=True, verbose_name="Id del comentario")
+    comen = models.CharField(max_length=200, blank=False, null=False, verbose_name="Comentario para el line up")
+    lineUp = models.ForeignKey(Lineup, on_delete=models.CASCADE)
+    usuario = UserForeignKey(auto_user_add=True, verbose_name="Usuario")
+
+    def __str__(self):
+        return self.comen
 
 class Avatar (models.Model):
     idAvatar = models.AutoField(primary_key=True, verbose_name="Id del Avatar")

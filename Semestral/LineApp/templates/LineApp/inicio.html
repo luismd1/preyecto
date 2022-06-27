@@ -181,6 +181,31 @@
                           </div>
                         </div>
                       </div>
+                      <div class="row">
+                        <form action="{% url 'comentar' Lineup.idLine %}" method="post">
+                          {% csrf_token %}
+                          <input type="text" placeholder="Escribir comentario..." id="comen" name="comen" class="form-control bg-dark text-white">
+                          <button type="submit" class="btn btn-danger mt-2">Comentar</button>
+                        </form>
+                      </div>
+                      <div class="row">
+                        {% for c in comentarios %}
+                        {% if c.lineUp.idLine == Lineup.idLine %}
+                        <div class="col-sm-12 border-top">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <p class="card-text">{{ c.usuario.username }}</p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <h5 class="card-text">{{ c.comen }}</h5>
+                            </div>
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                      </div>
                     </div>
                     <!-- PIE DE MODAL -->
 

@@ -159,7 +159,11 @@ iframe{
     background-size: cover;
     background-position: center center;
 }
-
+.Pearl{
+    background-image: url(../img/Mapas/pearl.png);
+    background-size: cover;
+    background-position: center center;
+}
 .campo{
     background-image: url(../img/Mapas/campo.jpeg);
     background-size: cover;

@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Lineup
+from .models import Comentario, Lineup
 from .models import Avatar
 
 class UserForm(UserCreationForm):
@@ -110,7 +110,3 @@ class SubirAvatarForm(forms.ModelForm):
         labels = {
             'avatar':'Avatar',
         }
-    
-
-
-        
