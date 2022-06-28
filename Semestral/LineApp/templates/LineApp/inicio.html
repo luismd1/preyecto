@@ -198,8 +198,15 @@
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-11">
                               <h5 class="card-text">{{ c.comen }}</h5>
+                            </div>
+                            <div class="col-sm-1">
+                              {% if request.user.is_staff or c.usuario == request.user %}
+                              <form action="">
+                                <button class="btn btn-danger mb-2">Borrar</button>
+                              </form>
+                              {% endif %}
                             </div>
                           </div>
                         </div>
