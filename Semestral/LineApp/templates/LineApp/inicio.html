@@ -203,8 +203,9 @@
                             </div>
                             <div class="col-sm-1">
                               {% if request.user.is_staff or c.usuario == request.user %}
-                              <form action="">
-                                <button class="btn btn-danger mb-2">Borrar</button>
+                              <form action="{% url 'borrar_comen' c.idComentario %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger mb-2">Borrar</button>
                               </form>
                               {% endif %}
                             </div>

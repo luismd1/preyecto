@@ -212,3 +212,13 @@ def comentar(request, codigo):
     Comentario.objects.create(comen=comentario, usuario=request.user, lineUp=line)
 
     return redirect('inicio')
+
+def borrar_comen (request, codigo):
+    usu = Comentario.objects.get(pk=codigo)
+    if request.user.is_staff or request.user == usu.usuario:
+        comentario = Comentario.objects.get(pk=codigo)
+        comentario.delete()
+        return redirect('inicio')
+    else:
+        messages.error(request, 'No tienes permiso para eliminar este comentario')
+        return redirect('inicio')
