@@ -124,51 +124,7 @@ iframe{
     width: 400px;
     height: auto;
 }
-.Ascent{
-    background-image: url(../img/Mapas/ascent.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Bind{
-    background-image: url(../img/Mapas/bind.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Breeze{
-    background-image: url(../img/Mapas/breeze.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Haven{
-    background-image: url(../img/Mapas/haven.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Icebox{
-    background-image: url(../img/Mapas/icebox.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Split{
-    background-image: url(../img/Mapas/split.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Fracture{
-    background-image: url(../img/Mapas/fracture.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
-.Pearl{
-    background-image: url(../img/Mapas/pearl.png);
-    background-size: cover;
-    background-position: center center;
-}
-.campo{
-    background-image: url(../img/Mapas/campo.jpeg);
-    background-size: cover;
-    background-position: center center;
-}
+
 
 #perfil-img {
     width: 200px;

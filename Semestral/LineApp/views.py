@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
+from django.core.paginator import Paginator
 
 
 
@@ -62,7 +63,13 @@ def registro(request):
 
     # HTML INICIO
 def inicio(request):
-    data = {"lista":Lineup.objects.all().order_by('idLine')[0:16],"lista2":Lineup.objects.all().order_by('idLine')[17:32], "comentarios": Comentario.objects.all()}
+    lista = Lineup.objects.all().order_by('idLine')
+    paginator = Paginator(lista, 12)
+    pagina = request.GET.get('page') or 1
+    videos = paginator.get_page(pagina)
+    pagina_actual = int(pagina)
+    paginas = range(1, paginator.num_pages + 1)
+    data = {"lista":videos, "paginas" : paginas, "pagina_actual" : pagina_actual , "comentarios": Comentario.objects.all()}
     return render(request,'LineApp/inicio.html',data)
 
 def filtroAgen(request, agen):

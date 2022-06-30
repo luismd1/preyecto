@@ -10,11 +10,11 @@
     <!--SEGUNDA FILA DE CONTENIDO-->
     <div class="row sticky-top">
       {% if request.user.is_staff %}
-      <div class="container bg-danger margin-left:30%">
+      <div class="container bg-danger bg-opacity-75">
           <h1 id="titulo" class="text-white d-flex justify-content-center"> vista de Moderador</h1> 
       </div>
     {% endif %}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -238,29 +238,43 @@
     <!-- Fin Videos -->
 
     <!--PAGINACION-->
+    <center>
     <div class="row">
-      <nav aria-label="Page navigation example ">
-        <ul class="pagination justify-content-center " style="margin-top: 30px;">
-          <li class="page-item ">
-            <a class="page-link bg-dark border-danger text-danger" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item "><a class="page-link bg-dark border-danger text-danger" href="inicio.html">1</a></li>
-          <li class="page-item"><a class="page-link bg-dark border-danger text-danger" href="inicio.html">2</a></li>
-          <li class="page-item"><a class="page-link bg-dark border-danger text-danger" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link bg-dark border-danger text-danger" href="/inicio2.html" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <div class="row mt-3 justify-content-center">
+        <nav>
+            <ul class="pagination">
+                {% if lista.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link link-danger bg-dark border-danger" href="?page=1">Inicio</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link link-danger bg-dark border-danger" href="?page={{ lista.previous_page_number }}">&laquo;</a>
+                    </li>
+                {% endif %}
+    
+                {% for pagina in paginas %}
+                    <li class="page-item {% if pagina_actual == pagina %}active{% endif %}">
+                        <a href="?page={{ pagina }}" class="page-link link-danger bg-dark border-danger">{{ pagina }}</a>
+                    </li>
+                {% endfor %}
+    
+                {% if lista.has_next %}
+                    <li class="page-item">
+                        <a class="page-link link-danger bg-dark border-danger" href="?page={{ lista.next_page_number }}">&raquo;</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link link-danger bg-dark border-danger" href="?page={{ lista.paginator.num_pages }}">Fin</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
-   
-    {% endblock content %}
+    </div>
+  </center>
+  {% endblock content %}
 
 
     {% block script %}
     <script src="{% static 'LineApp/js/Info.js' %}"></script>
+    <script src="{% static 'LineApp/js/mapas.js' %}"></script>
     {% endblock script %}
