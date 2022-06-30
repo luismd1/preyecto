@@ -16,6 +16,10 @@
 </head>
 
 <body class="bg4">
+    <div id="contenedor-carga">
+        <div id="carga">
+        </div>
+    </div>
 <div class="container bg-dark bg-opacity-75">
     <!--PRIMERA FILA Y MENU PRINCIPAL-->
     <div class="row">
@@ -89,6 +93,14 @@
 
 {% block script %}
 {% endblock script %}
+<script>
+    window.onload = function() {
+        var contenedor = document.getElementById("contenedor-carga");
+
+        contenedor.style.visibility = "hidden";
+        contenedor.style.opacity = "0";
+    }
+</script>
 </body>
 
 </html>
